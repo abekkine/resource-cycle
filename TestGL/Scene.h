@@ -1,7 +1,7 @@
 #pragma once
 #include "IRenderable.h"
-class Scene :
-	public IRenderable
+#include "Planet.h"
+class Scene : public IRenderable
 {
 public:
 	Scene();
@@ -9,5 +9,7 @@ public:
 	void Init();
 	virtual void Render();
 	virtual void Update(double deltaTime);
+private:
+	Planet* planet;
 };
 

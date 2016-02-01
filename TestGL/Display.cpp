@@ -10,18 +10,16 @@ Display::~Display()
 {
 }
 
+void Display::RegisterScene(Scene* scene) {
+	scene_ = scene;
+}
+
 void Display::OnDisplay() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	glLineWidth(4.0);
-	glColor3f(1.0, 1.0, 1.0);
-	glBegin(GL_LINE_STRIP);
-	glVertex2f(-80.0, -80.0);
-	glVertex2f(80.0, -80.0);
-	glVertex2f(80.0, 80.0);
-	glVertex2f(-80.0, 80.0);
-	glVertex2f(-80.0, -80.0);
-	glEnd();
+	if (scene_ != 0) {
+		scene_->Render();
+	}
 
 	glutSwapBuffers();
 }
@@ -66,5 +64,7 @@ void Display::OnEntry(int state) {
 }
 
 void Display::OnIdle() {
-
+	if (scene_ != 0) {
+		scene_->Update(0.0);
+	}
 }

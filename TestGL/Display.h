@@ -1,11 +1,15 @@
 #pragma once
 #include "IGlutCallback.h"
-class Display :
-	public IGlutCallback
+#include "Scene.h"
+class Display :	public IGlutCallback
 {
+private:
+	Scene* scene_;
 public:
 	Display();
 	~Display();
+	void RegisterScene(Scene* scene);
+
 	virtual void OnDisplay();
 	virtual void OnRegularKey(unsigned char key, int x, int y);
 	virtual void OnSpecialKey(int key, int x, int y);

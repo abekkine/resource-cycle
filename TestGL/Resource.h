@@ -8,5 +8,8 @@ public:
 	~Resource();
 	virtual void Render();
 	virtual void Update(double deltaTime);
+
+private:
+	double x, y;
 };
 
