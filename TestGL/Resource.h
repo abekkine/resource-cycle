@@ -4,7 +4,7 @@ class Resource :
 	public IRenderable
 {
 public:
-	Resource();
+	Resource(float altitude);
 	~Resource();
 	virtual void Render();
 	virtual void Update(double deltaTime);

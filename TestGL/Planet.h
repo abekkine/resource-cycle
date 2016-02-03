@@ -17,6 +17,7 @@ public:
 	virtual void Update(double deltaTime);
 
 private:
+	float theta;
 	double radius_;
 	double omega_;
 	std::vector<Resource*> resources_;

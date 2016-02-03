@@ -15,13 +15,19 @@ void Glut::Init(int* argc, char** argv) {
 
 void Glut::InitWindow() {
 	glutInitWindowSize(800, 800);
-	glutInitWindowPosition(100, 100);
+	glutInitWindowPosition(2000, 30);
 	glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE);
 	glutCreateWindow("Test GL");
 }
 
 void Glut::Setup() {
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	glEnable(GL_LINE_SMOOTH);
+	glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 }
 
 void Glut::RegisterCallbacks(IGlutCallback* callbackInstance) {

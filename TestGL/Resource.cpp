@@ -1,12 +1,16 @@
-#include <GL/freeglut.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
+#include <GL/freeglut.h>
+
+#include "Shapes.h"
 #include "Resource.h"
 
-Resource::Resource()
+Resource::Resource(float altitude)
 {
+	float a = 2.0 * M_PI * (rand() / (double)RAND_MAX);
 
-	x = (rand() / (double)RAND_MAX) * 160.0 - 80.0;
-	y = (rand() / (double)RAND_MAX) * 160.0 - 80.0;
+	x = altitude * cos(a);
+	y = altitude * sin(a);
 }
 
 Resource::~Resource()
@@ -15,16 +19,11 @@ Resource::~Resource()
 
 void Resource::Render()
 {
+	glColor3f(0.7f, 0.2f, 0.2f);
+	Shapes::FillRPoly(x, y, 5.0f, 5.0f);
 
-	glLineWidth(1.0);
-	glColor3f(1.0, 0.0, 0.0);
-	glBegin(GL_LINE_STRIP);
-	glVertex2f(x-5.0, y-5.0);
-	glVertex2f(x-5.0, y+5.0);
-	glVertex2f(x+5.0, y+5.0);
-	glVertex2f(x+5.0, y-5.0);
-	glVertex2f(x-5.0, y-5.0);
-	glEnd();
+	glColor3f(1.0f, 1.0f, 1.0f);
+	Shapes::RPoly(x, y, 5.0f, 5.0f, 1.0f);
 }
 
 void Resource::Update(double deltaTime)

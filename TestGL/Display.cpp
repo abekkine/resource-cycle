@@ -22,6 +22,7 @@ void Display::OnDisplay() {
 	}
 
 	glutSwapBuffers();
+	glutPostRedisplay();
 }
 
 void Display::OnRegularKey(unsigned char key, int x, int y) {
